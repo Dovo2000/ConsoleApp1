@@ -12,6 +12,9 @@ namespace GitTest
         {
             // primera version
             Console.WriteLine("V0.1 hello world!");
+
+            // Segunda version
+            Console.WriteLine("V0.2");
         }
     }
 }
