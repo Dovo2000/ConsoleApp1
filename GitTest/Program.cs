@@ -10,6 +10,8 @@ namespace GitTest
     {
         static void Main(string[] args)
         {
+            // primera version
+            Console.WriteLine("V0.1 hello world!");
         }
     }
 }
