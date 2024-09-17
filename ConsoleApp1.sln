@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleSnake", "ConsoleSnak
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestorEquipos", "GestorEquipos\GestorEquipos.csproj", "{CA098096-7544-441A-8251-30A401518ADA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardsGames", "CardsGames\CardsGames.csproj", "{2F4E5881-29AD-4A15-85CD-A63865DA9BD5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{CA098096-7544-441A-8251-30A401518ADA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA098096-7544-441A-8251-30A401518ADA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA098096-7544-441A-8251-30A401518ADA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F4E5881-29AD-4A15-85CD-A63865DA9BD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F4E5881-29AD-4A15-85CD-A63865DA9BD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F4E5881-29AD-4A15-85CD-A63865DA9BD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F4E5881-29AD-4A15-85CD-A63865DA9BD5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
