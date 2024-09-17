@@ -12,6 +12,7 @@ namespace NEnRaya
         static int NumOfDimensions = 1;
         static char[] tableInfo = new char[MaxSize ^ NumOfDimensions];
 
+
         static void Main(string[] args)
         {
             StartGame();
