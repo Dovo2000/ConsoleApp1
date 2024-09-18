@@ -10,9 +10,25 @@ namespace CardsGames
     {
         private List<Card> cartas;
 
+        public int CardCount { get => cartas.Count; }
+
         public Deck() 
         {
             cartas = new List<Card>();
+        }
+
+        public Deck(List<Card> cartas)
+        {
+            this.cartas = cartas;
+        }
+
+        public void InitializeFullDeck()
+        {
+            foreach (Card.eSuit palo in Enum.GetValues(typeof(Card.eSuit)))
+            {
+                for (int i = 1; i < 13; i++)
+                    cartas.Add(new Card(palo, i));
+            }
         }
 
         public void Shuffle()
@@ -35,7 +51,7 @@ namespace CardsGames
 
         public Card DrawCard()
         {
-            Card drawedCard = cartas.Last();
+            Card drawedCard = cartas.First();
             cartas.Remove(drawedCard);
 
             return drawedCard;
@@ -57,6 +73,21 @@ namespace CardsGames
             cartas.RemoveAt(position);
 
             return drawedCard;
+        }
+
+        public void AddCards(List<Card> newCards)
+        {
+            foreach (Card card in newCards)
+                cartas.Add(card);
+        }
+
+        public override string ToString()
+        {
+            string output = "";
+            foreach (Card card in cartas)
+                output += card.ToString() + "\n";
+
+            return output;
         }
     }
 }

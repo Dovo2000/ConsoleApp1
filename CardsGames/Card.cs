@@ -45,5 +45,10 @@ namespace CardsGames
             this.palo = palo;
             this.num = num;
         }
+
+        public override string ToString()
+        {
+            return num.ToString() + " de " + palo.ToString();
+        } 
     }
 }
