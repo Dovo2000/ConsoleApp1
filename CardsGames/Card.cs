@@ -14,7 +14,11 @@ namespace CardsGames
             Oros,
             Bastos,
             Copas,
-            Espadas
+            Espadas,
+            Picas,
+            Treboles,
+            Corazon,
+            Diamantes
         };
 
         private eSuit palo;
