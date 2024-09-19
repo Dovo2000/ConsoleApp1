@@ -54,7 +54,12 @@ namespace CardsGames
                 List<Card> temp = new List<Card>();
 
                 for (int count = 0; count < cardsPerPlayer; count++)
-                    temp.Add(initialDeck.DrawCard());
+                {
+                    Card cardToAdd = initialDeck.DrawCard();
+                    cardToAdd.PlayerId = playerNum;
+
+                    temp.Add(cardToAdd);
+                }
 
                 playersInfo.Add(new Player(new Deck(temp), playerNum));
             }
@@ -67,18 +72,18 @@ namespace CardsGames
                 PrintPlayersDecks();
 
                 // Saca cada jugador una carta
-                List<(Card, int)> turnCards = PlayCards();
+                List<Card> turnCards = PlayCards();
 
                 // Se comparan las cartas y se devuelven todas las cartas al jugador que ha sacado la carta más alta
-                (Card, int) winnerCard = GetWinnerCard(turnCards);
+                Card winnerCard = GetWinnerCard(turnCards);
 
-                GiveWinnersCards(turnCards, winnerCard.Item2);
+                GiveWinnersCards(turnCards, winnerCard.PlayerId);
 
                 CheckLoosers();
 
                 if (loosersId.Count == playersInfo.Count - 1)   // Win check
                 {
-                    winnerId = winnerCard.Item2;
+                    winnerId = winnerCard.PlayerId;
                     break;
                 }
 
@@ -114,54 +119,57 @@ namespace CardsGames
             Console.Clear();
 
             foreach (Player player in playersInfo)
-            {
                 player.PrintPlayer();
-            }
         }
 
-        private List<(Card, int)> PlayCards()
+        private List<Card> PlayCards()
         {
-            List<(Card card, int playerID)> turnCards = new List<(Card card, int playerID)>();
+            List<Card> turnCards = new List<Card>();
 
             foreach (Player player in playersInfo)
             {
                 if (player.CardsCount != 0)
-                    turnCards.Add((player.DrawCard(), player.PlayerId));
+                {
+                    Card cardToAdd = player.DrawCard();
+                    cardToAdd.PlayerId = player.PlayerId;
+                    turnCards.Add(cardToAdd);
+                }
             }
 
             return turnCards;
         }
 
 
-        private (Card, int) GetWinnerCard(List<(Card, int)> turnList)
+        private Card GetWinnerCard(List<Card> turnList)
         {
             if (turnList.Count == 0)
             {
                 Console.WriteLine("No se ha podido jugar la ronda: La lista de jugadas está vacía");
-                return (new Card(), 0);
+                return null;
             }
 
-            (Card, int) maxCard = (new Card(Card.eSuit.Oros, 1), 0);
+            Card maxCard = new Card(Card.eSuit.Oros, 1, 0);
 
             foreach (var cardTurn in turnList)
             {
-                if (cardTurn.Item1 > maxCard.Item1)
-                {
+                if (cardTurn > maxCard)
                     maxCard = cardTurn;
-                }
             }
 
-            Console.WriteLine($"La carta ganadora es el {maxCard.Item1.ToString()} del jugador {maxCard.Item2 + 1}");
+            Console.WriteLine($"La carta ganadora es el {maxCard.ToString()} del jugador {maxCard.PlayerId + 1}");
 
             return maxCard;
         }
 
-        private void GiveWinnersCards(List<(Card, int)> turnCards, int winner)
+        private void GiveWinnersCards(List<Card> turnCards, int winner)
         {
             List<Card> cardsToWinner = new List<Card>();
 
             foreach (var card in turnCards)
-                cardsToWinner.Add(card.Item1);
+            {
+                card.PlayerId = winner;
+                cardsToWinner.Add(card);
+            }
 
             playersInfo[winner].AddCards(cardsToWinner);
         }
@@ -171,9 +179,7 @@ namespace CardsGames
             foreach (Player player in playersInfo)
             {
                 if (player.CardsCount == 0 && !loosersId.Contains(player.PlayerId))
-                {
                     loosersId.Add(player.PlayerId);
-                }
             }
 
             // Print loosers

@@ -27,7 +27,7 @@ namespace CardsGames
             foreach (Card.eSuit palo in Enum.GetValues(typeof(Card.eSuit)))
             {
                 for (int i = 1; i < 13; i++)
-                    cartas.Add(new Card(palo, i));
+                    cartas.Add(new Card(palo, i, 0));
             }
         }
 
@@ -49,24 +49,6 @@ namespace CardsGames
             }
         }
 
-        public Card DrawCard()
-        {
-            Card drawedCard = cartas.First();
-            cartas.Remove(drawedCard);
-
-            return drawedCard;
-        }
-
-        public Card DrawRandomCard()
-        {
-            Random randNum = new Random();
-
-            Card drawedCard = cartas[randNum.Next(0, cartas.Count)];
-            cartas.Remove(drawedCard);
-
-            return drawedCard;
-        }
-
         public Card DrawCardAt(int position)
         {
             Card drawedCard = cartas[position];
@@ -75,10 +57,21 @@ namespace CardsGames
             return drawedCard;
         }
 
+        public Card DrawCard()
+        {
+            return DrawCardAt(0);
+        }
+
+        public Card DrawRandomCard()
+        {
+            Random randNum = new Random();
+
+            return DrawCardAt(randNum.Next(0, cartas.Count));
+        }
+
         public void AddCards(List<Card> newCards)
         {
-            foreach (Card card in newCards)
-                cartas.Add(card);
+            cartas.AddRange(newCards);
         }
 
         public override string ToString()

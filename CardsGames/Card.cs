@@ -19,6 +19,7 @@ namespace CardsGames
 
         private eSuit palo;
         private int num;
+        private int playerId;
 
         public eSuit Palo { get => palo; }
 
@@ -35,16 +36,13 @@ namespace CardsGames
             }
         }
 
-        public Card() 
-        {
-            palo = new eSuit();
-            num = 1;
-        }
+        public int PlayerId { get => playerId; set => playerId = value; }
 
-        public Card(eSuit palo, int num)
+        public Card(eSuit palo, int num, int playerId)
         {
             this.palo = palo;
             this.num = num;
+            this.playerId = playerId;
         }
 
         public override string ToString()
