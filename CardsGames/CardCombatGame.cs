@@ -29,7 +29,7 @@ namespace CardsGames
 
                 GameLoop();
 
-                Console.WriteLine($"Gana el jugador {winnerId}");
+                Console.WriteLine($"Gana el jugador {winnerId + 1}");
                 Console.WriteLine("Press any key to continue or ESC to exit...");
                 ckf = Console.ReadKey();
             }
@@ -39,6 +39,9 @@ namespace CardsGames
         private void InitGame()
         {
             playersInfo.Clear();
+            winnerId = 0;
+            loosersId = new List<int>();
+
             Console.Clear();
 
             int numPlayers = GetNumOfPlayers();
