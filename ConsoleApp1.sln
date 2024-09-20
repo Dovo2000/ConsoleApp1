@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestorEquipos", "GestorEqui
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardsGames", "CardsGames\CardsGames.csproj", "{2F4E5881-29AD-4A15-85CD-A63865DA9BD5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geometria2D", "Geometria2D\Geometria2D.csproj", "{84F33A21-F8EA-433B-A681-00CB6A56A0BC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{2F4E5881-29AD-4A15-85CD-A63865DA9BD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F4E5881-29AD-4A15-85CD-A63865DA9BD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F4E5881-29AD-4A15-85CD-A63865DA9BD5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84F33A21-F8EA-433B-A681-00CB6A56A0BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84F33A21-F8EA-433B-A681-00CB6A56A0BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84F33A21-F8EA-433B-A681-00CB6A56A0BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84F33A21-F8EA-433B-A681-00CB6A56A0BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
