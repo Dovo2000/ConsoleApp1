@@ -8,8 +8,6 @@ namespace Geometria2D
 {
     internal class Cuadrado : Rectangulo
     {
-        double lado;
-
         public Cuadrado(double longitudLado) : base(longitudLado, longitudLado){ }
     }
 }

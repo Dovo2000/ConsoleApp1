@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Circulo.cs" />
     <Compile Include="Cuadrado.cs" />
+    <Compile Include="Diagrama.cs" />
     <Compile Include="Elipse.cs" />
     <Compile Include="Figura2D.cs" />
     <Compile Include="NGono.cs" />

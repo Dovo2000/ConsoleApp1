@@ -10,34 +10,28 @@ namespace Geometria2D
     {
         static void Main(string[] args)
         {
-            List<Figura2D> figuras2D = new List<Figura2D>();
+            ConsoleKeyInfo consoleKey;
 
-            Circulo circulo1 = new Circulo(3);
-            figuras2D.Add(circulo1);
+            do
+            {
+                Console.Clear();
+                Console.WriteLine("¿De cuantas figuras quieres el diagrama?");
+                string input = Console.ReadLine();
 
-            Circulo circulo2 = new Circulo(10);
-            figuras2D.Add(circulo2);
+                if(int.TryParse(input, out int diagramSize))
+                {
+                    Diagrama diagrama = new Diagrama(diagramSize);
 
-            Elipse elipse1 = new Elipse(5, 7);
-            figuras2D.Add(elipse1);
+                    Console.WriteLine($"El diagrama esta compuesto de {diagrama.ToString()}");
+                    Console.WriteLine($"Área: {diagrama.Area()} | Perímetro: {diagrama.Perimetro()}");
+                }
+                else
+                    Console.WriteLine("No se ha identificado correctamente el tamaño del diagrama");
 
-            Rectangulo rect1 = new Rectangulo(7, 10);
-            figuras2D.Add(rect1);
-
-            Cuadrado cuadrado1 = new Cuadrado(10);
-            figuras2D.Add(cuadrado1);
-
-            NGono nGono1 = new NGono(7, 10);
-            figuras2D.Add(nGono1);
-
-            NGono nGono2 = new NGono(5, 5);
-            figuras2D.Add(nGono2);
-
-
-            foreach (Figura2D figura2D in figuras2D)
-                Console.WriteLine($"{figura2D.ToString()} - | Perímetro: {figura2D.Perimetro()} | Área: {figura2D.Area()}");
-
-            Console.ReadKey();
+                Console.WriteLine("Pulsa cualquier tecla para continuar o ESC para salir...");
+                consoleKey = Console.ReadKey();
+            }
+            while (consoleKey.Key != ConsoleKey.Escape);
         }
     }
 }
