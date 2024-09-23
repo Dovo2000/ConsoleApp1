@@ -26,15 +26,17 @@ namespace Geometria2D
 
         public Diagrama(int maxSize)
         {
+            Random random = new Random();
             figuras = new List<Figura2D>();
 
             this.maxSize = maxSize;
 
             while (maxSize > figuras.Count)
             {
-                Random random = new Random();
                 Figura2D nuevaFigura;
                 eFormas2D tipoForma = (eFormas2D) random.Next(0, (int) eFormas2D.Count);
+
+                Console.WriteLine(tipoForma.ToString());
 
                 switch(tipoForma)
                 {

@@ -17,7 +17,7 @@ namespace CardsGames
             Espadas,
             Picas,
             Treboles,
-            Corazon,
+            Corazones,
             Diamantes
         };
 
