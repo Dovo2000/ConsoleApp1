@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardsGames", "CardsGames\Ca
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geometria2D", "Geometria2D\Geometria2D.csproj", "{84F33A21-F8EA-433B-A681-00CB6A56A0BC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HospitalManager", "HospitalManager\HospitalManager.csproj", "{D9668B54-D150-4595-9C21-9691DB791ACA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{84F33A21-F8EA-433B-A681-00CB6A56A0BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84F33A21-F8EA-433B-A681-00CB6A56A0BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84F33A21-F8EA-433B-A681-00CB6A56A0BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9668B54-D150-4595-9C21-9691DB791ACA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9668B54-D150-4595-9C21-9691DB791ACA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9668B54-D150-4595-9C21-9691DB791ACA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9668B54-D150-4595-9C21-9691DB791ACA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

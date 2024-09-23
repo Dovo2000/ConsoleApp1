@@ -1,0 +1,39 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Hospital
+{
+    internal class Doctor : Person
+    {
+        List<Patient> patients;
+
+        public Doctor(string name, int age, string id) : base(name, age, id)
+        {
+            patients = new List<Patient>();
+        }
+
+        public override string ToString()
+        {
+            string output = base.ToString() + GetType().ToString() + "\n";
+            output += "Patients: \n";
+
+            foreach (Patient patient in patients) 
+                output += patient.ToString() + "\n";
+
+            return output;
+        }
+
+        public void AddPatient(Patient patient)
+        {
+            patients.Add(patient);
+        }
+
+        public void RemovePatient(Patient patient)
+        {
+            patients.Remove(patient);
+        }
+    }
+}
