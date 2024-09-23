@@ -10,7 +10,6 @@ namespace Geometria2D
     {
         enum eFormas2D
         {
-            None = 0,
             Elipse,
             Circulo,
             Triangulo,
@@ -40,9 +39,6 @@ namespace Geometria2D
 
                 switch(tipoForma)
                 {
-                    case eFormas2D.None:
-                        return;
-
                     case eFormas2D.Elipse:
                         double randomRadius1 = random.Next(0, 100);
                         double randomRadius2 = random.Next(0, 100);
