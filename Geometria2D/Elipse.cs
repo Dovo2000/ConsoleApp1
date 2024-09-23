@@ -24,7 +24,7 @@ namespace Geometria2D
 
         public override double Perimetro()
         {
-            return Math.PI * (3.0 * (radioH + radioV) - Math.Sqrt((3.0 * radioH + radioV) * (radioH + 3.0 * radioV))); // https://www.universoformulas.com/matematicas/geometria/perimetro-elipse/
+            return 2 * Math.PI * Math.Sqrt((Math.Pow(radioH, 2) + Math.Pow(radioV, 2)) / 2); // https://www.universoformulas.com/matematicas/geometria/perimetro-elipse/
         }
     }
 }

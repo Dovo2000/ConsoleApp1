@@ -9,10 +9,5 @@ namespace Geometria2D
     internal class Circulo : Elipse
     {
         public Circulo(double radio) : base(radio, radio){ }
-
-        public override double Perimetro()
-        {
-            return 2 * Math.PI * radioH;
-        }
     }
 }
