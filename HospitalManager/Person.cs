@@ -16,7 +16,7 @@ namespace Hospital
 
         public int Age { get => age; protected set => age = value; }
 
-        public string Id { get => Id; protected set => Id = value; }
+        public string Id { get => id; protected set => id = value; }
 
         public Person(string name, int age, string id)
         {

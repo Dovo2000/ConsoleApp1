@@ -49,12 +49,18 @@ namespace Hospital
         {
             string output = "";
             output += "Doctors: \n";
-            foreach (Doctor doctor in people)
-                output += doctor.ToString() + "\n";
+            foreach (Person p in people)
+            {
+                if (p.GetType() == typeof(Doctor))
+                    output += p.ToString() + "\n";
+            }
 
             output += "Administratives: \n";
-            foreach (Administrative admin in people)
-                output += admin.ToString() + "\n";
+            foreach (Person p in people)
+            {
+                if (p.GetType() == typeof(Administrative))
+                    output += p.ToString() + "\n";
+            }
 
             return output;
         }
