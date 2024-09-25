@@ -91,5 +91,10 @@ namespace Hospital
 
             return result;
         }
+
+        public Doctor GetDoctorByID(string id)
+        {
+            return people.Find(p => p is Doctor &&  p.Id == id) as Doctor;
+        }
     }
 }

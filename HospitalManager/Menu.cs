@@ -148,7 +148,6 @@ namespace Hospital
 
             if (inputData.Length >= 4 && int.TryParse(inputData[1], out int doctorAge))
             {
-                newPatient = new Patient(inputData[0], doctorAge, inputData[2], inputData[3]);
 
                 Console.WriteLine("Introduce the doctor's ID assigned to this patient\n");
 
@@ -156,6 +155,8 @@ namespace Hospital
 
                 string docId = Console.ReadLine();
 
+                Doctor doc = hospital.GetDoctorByID(docId);
+                newPatient = new Patient(inputData[0], doctorAge, inputData[2], inputData[3], doc);
                 hospital.AddPatient(newPatient, docId);
                 Console.WriteLine($"Added Patient: {inputData[0]}");
             }
