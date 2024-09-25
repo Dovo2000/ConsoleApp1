@@ -27,7 +27,7 @@ namespace Hospital
 
         public override string ToString()
         {
-            return $"Name: {name}\nAge: {age}\nId: {id}\nRole: ";
+            return $"Name: {name}\nAge: {age}\nId: {id}\n";
         }
     }
 }

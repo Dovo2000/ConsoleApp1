@@ -8,13 +8,16 @@ namespace Hospital
 {
     internal class Patient : Person
     {
-        public Patient(string name, int age, string id) : base(name, age, id)
+        public string Illness;
+
+        public Patient(string name, int age, string id, string illness) : base(name, age, id)
         {
+            Illness = illness;
         }
 
         public override string ToString()
         {
-            return base.ToString() + GetType().ToString();
+            return base.ToString() + "Illness: " + Illness + "\n";
         }
     }
 }

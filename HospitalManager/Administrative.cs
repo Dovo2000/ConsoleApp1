@@ -15,7 +15,7 @@ namespace Hospital
 
         public override string ToString()
         {
-            return base.ToString() + GetType().ToString();
+            return base.ToString();
         }
     }
 }

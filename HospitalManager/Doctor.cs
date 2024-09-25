@@ -10,6 +10,7 @@ namespace Hospital
     {
         List<Patient> patients;
 
+
         public Doctor(string name, int age, string id) : base(name, age, id)
         {
             patients = new List<Patient>();
@@ -17,7 +18,7 @@ namespace Hospital
 
         public override string ToString()
         {
-            string output = base.ToString() + GetType().ToString() + "\n";
+            string output = base.ToString();
             output += "Patients: \n";
 
             foreach (Patient patient in patients) 
@@ -31,9 +32,13 @@ namespace Hospital
             patients.Add(patient);
         }
 
-        public void RemovePatient(Patient patient)
+        public void RemovePatient(string patientId)
         {
-            patients.Remove(patient);
+            foreach(Patient pat in patients)
+            {
+                if(pat.Id == patientId)
+                    patients.Remove(pat); 
+            }
         }
     }
 }

@@ -35,14 +35,14 @@ namespace Hospital
             people.Remove(administrative);
         }
 
-        public void AddPatient(Patient patient, Doctor doctor)
+        public void AddPatient(Patient patient, string doctorId)
         {
-            ((Doctor) people.Find(d => d == doctor)).AddPatient(patient);
+            ((Doctor) people.Find(d => d.Id == doctorId)).AddPatient(patient);
         }
 
-        public void RemovePatient(Patient patient, Doctor doctor)
+        public void RemovePatient(string patientId, string doctorId)
         {
-            ((Doctor) people.Find(d => d == doctor)).RemovePatient(patient);
+            ((Doctor) people.Find(d => d.Id == doctorId)).RemovePatient(patientId);
         }
 
         public override string ToString()
@@ -51,14 +51,14 @@ namespace Hospital
             output += "Doctors: \n";
             foreach (Person p in people)
             {
-                if (p.GetType() == typeof(Doctor))
+                if (p is Doctor)
                     output += p.ToString() + "\n";
             }
 
             output += "Administratives: \n";
             foreach (Person p in people)
             {
-                if (p.GetType() == typeof(Administrative))
+                if (p is Administrative)
                     output += p.ToString() + "\n";
             }
 
