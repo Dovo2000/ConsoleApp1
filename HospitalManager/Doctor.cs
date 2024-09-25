@@ -34,11 +34,34 @@ namespace Hospital
 
         public void RemovePatient(string patientId)
         {
-            foreach(Patient pat in patients)
+            try
             {
-                if(pat.Id == patientId)
-                    patients.Remove(pat); 
+                Patient patient = patients.Find(p => p.Id == patientId);
+
+                patients.Remove(patient);
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        public bool HasPatient(string patientId) 
+        {
+            try
+            {
+                Patient patient = patients.Find(p => p.Id == patientId);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public List<Patient> GetPatients()
+        {
+            return patients;
         }
     }
 }

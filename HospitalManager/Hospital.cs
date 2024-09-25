@@ -37,12 +37,26 @@ namespace Hospital
 
         public void AddPatient(Patient patient, string doctorId)
         {
-            ((Doctor) people.Find(d => d.Id == doctorId)).AddPatient(patient);
+            try
+            {
+                ((Doctor)people.Find(d => d.Id == doctorId)).AddPatient(patient);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"The doctor assigned to that ID couldn't be found: {ex.Message}");
+            }
         }
 
         public void RemovePatient(string patientId, string doctorId)
         {
-            ((Doctor) people.Find(d => d.Id == doctorId)).RemovePatient(patientId);
+            try
+            {
+                ((Doctor) people.Find(d => d.Id == doctorId)).RemovePatient(patientId);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"The doctor or patient assigned to that ID couldn't be found: {ex.Message}");
+            }
         }
 
         public override string ToString()
@@ -63,6 +77,19 @@ namespace Hospital
             }
 
             return output;
+        }
+
+        public List<Doctor> GetDoctors()
+        {
+            List<Person> docs = people.Where(p => p is Doctor).ToList();
+            List<Doctor> result = new List<Doctor>();
+
+            foreach (var p in docs)
+            {
+                result.Add(p as Doctor);
+            }
+
+            return result;
         }
     }
 }

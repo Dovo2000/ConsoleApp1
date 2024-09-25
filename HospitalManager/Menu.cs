@@ -14,43 +14,28 @@ namespace Hospital
             hospital = new Hospital();
         }
 
-        public void PrintOptions()
-        {
-            Console.WriteLine(
-                @"(0) Exit.
-                (1) Add new Doctor.
-                (2) Add new Administrative.
-                (3) Add new Patient.
-                
-                (4) Remove a Patient.
-                (5) See Doctors.
-                (6) See Doctor patients.
-                (7) People in the Hospital.");
-        }
-
-        public int GetUserIntInput()
+        public void Start()
         {
             while (true)
             {
-                Console.Clear();
-                Console.WriteLine("Select an option:");
-                Console.WriteLine(ToString());
-
-                string rawInput = Console.ReadLine();
-
-                if (int.TryParse(rawInput, out int optionIndex))
+                if (SelectOption(GetUserIntInput()))
                 {
-                    return optionIndex;
+                    Console.WriteLine("\nPress any key to continue...");
+                    Console.ReadKey();
                 }
+                else
+                    return;
             }
         }
 
-        public void SelectOption(int option)
+        private bool SelectOption(int option)
         {
+            Console.Clear();
+
             switch (option)
             {
                 case 0:
-                    return;
+                    return false;
 
                 case 1:
                     AddNewDoctor();
@@ -69,21 +54,51 @@ namespace Hospital
                     break;
 
                 case 5:
+                    PrintDoctorInfo();
                     break;
 
                 case 6:
-                    break;
-
-                case 7:
+                    PrintPeopleInHospital();
                     break;
 
                 default:
                     break;
 
             }
+            return true;
         }
 
-        public void AddNewDoctor()
+        private int GetUserIntInput()
+        {
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("Select an option:");
+                PrintOptions();
+
+                string rawInput = Console.ReadLine();
+
+                if (int.TryParse(rawInput, out int optionIndex))
+                {
+                    return optionIndex;
+                }
+            }
+        }
+
+        private void PrintOptions()
+        {
+            Console.WriteLine(
+                @"(0) Exit.
+
+(1) Add new Doctor.
+(2) Add new Administrative.
+(3) Add new Patient.
+(4) Remove a Patient.
+(5) See Doctors and Patients.
+(6) People in the Hospital.");
+        }
+
+        private void AddNewDoctor()
         {
             Console.WriteLine("Introduce the data of the new Doctor (Name,Age,ID)");
 
@@ -103,7 +118,7 @@ namespace Hospital
             }
         }
 
-        public void AddNewAdministrative()
+        private void AddNewAdministrative()
         {
             Console.WriteLine("Introduce the data of the new Administrative (Name,Age,ID)");
 
@@ -123,7 +138,7 @@ namespace Hospital
             }
         }
 
-        void AddNewPatient()
+        private void AddNewPatient()
         {
             Console.WriteLine("Introduce the data of the new Patient (Name,Age,ID,Illness)");
 
@@ -135,7 +150,10 @@ namespace Hospital
             {
                 newPatient = new Patient(inputData[0], doctorAge, inputData[2], inputData[3]);
 
-                Console.WriteLine("Introduce the doctor's ID assigned to this patient");
+                Console.WriteLine("Introduce the doctor's ID assigned to this patient\n");
+
+                PrintDoctorInfo();
+
                 string docId = Console.ReadLine();
 
                 hospital.AddPatient(newPatient, docId);
@@ -147,10 +165,48 @@ namespace Hospital
             }
         }
 
-        void RemovePatient()
+        private void RemovePatient()
         {
-            Console.WriteLine("Introduce the ID of the patient you want to remove")
+            Console.WriteLine("Introduce the ID of the patient you want to remove:");
+            PrintPatients();
+            string patientId = Console.ReadLine();
+
+            var doctors = hospital.GetDoctors();
+
+            try
+            {
+                var doc = doctors.Find(d => d.HasPatient(patientId));
+
+                doc.RemovePatient(patientId);
+            }
+            catch 
+            { 
+                Console.WriteLine("The patient is not assigned to any doctor."); 
+            }
         }
 
+        private void PrintDoctorInfo()
+        {
+            var doctors = hospital.GetDoctors();
+
+            foreach (var doctor in doctors)
+                Console.WriteLine(doctor.ToString());
+        }
+
+        private void PrintPeopleInHospital()
+        {
+            Console.WriteLine(hospital.ToString());
+        }
+
+        private void PrintPatients()
+        {
+            var doctors = hospital.GetDoctors();
+
+            foreach(Doctor d in doctors)
+            {
+                foreach(Patient p in d.GetPatients())
+                    Console.WriteLine(p.ToString());
+            }
+        }
     }
 }
