@@ -53,7 +53,7 @@ namespace Hospital
                 Patient patient = patients.Find(p => p.Id == patientId);
                 return true;
             }
-            catch (Exception ex)
+            catch
             {
                 return false;
             }
