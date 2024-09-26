@@ -10,11 +10,13 @@ namespace Hospital
     {
         List<Patient> patients;
         string speciality;
+        List<Appointment> appointments;
 
-        public Doctor(string name, int age, string id, string speciality) : base(name, age, id)
+        public Doctor(string name, int age, string speciality) : base(name, age)
         {
             patients = new List<Patient>();
             this.speciality = speciality;
+            appointments = new List<Appointment>();
         }
 
         public override string ToString()
@@ -33,7 +35,7 @@ namespace Hospital
             patients.Add(patient);
         }
 
-        public void RemovePatient(string patientId)
+        public void RemovePatient(int patientId)
         {
             try
             {
@@ -46,7 +48,7 @@ namespace Hospital
             }
         }
 
-        public bool HasPatient(string patientId) 
+        public bool HasPatient(int patientId) 
         {
             try
             {
@@ -62,6 +64,16 @@ namespace Hospital
         public List<Patient> GetPatients()
         {
             return patients;
+        }
+
+        public void AddAppointment(Appointment appointment)
+        {
+            appointments.Add(appointment);
+        }
+
+        public void RemoveAppointment(Appointment appointmentToRemove)
+        {
+            appointments.Remove(appointmentToRemove);
         }
     }
 }

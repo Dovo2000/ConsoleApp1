@@ -29,12 +29,12 @@ namespace Hospital
             }
         }
 
-        public Patient(string name, int age, string id) : base(name, age, id)
+        public Patient(string name, int age) : base(name, age)
         {
             appointments = new List<Appointment>();
         }
 
-        public Patient(string name, int age, string id, string illness, string phoneNumber) : this(name, age, id)
+        public Patient(string name, int age, string illness, string phoneNumber) : this(name, age)
         {
             Illness = illness;
             PhoneNumber = phoneNumber;
@@ -45,9 +45,22 @@ namespace Hospital
             return $"{base.ToString()}Illness: {Illness}\nDoctor: {doctor.Name}\nAppointments: {AppointmentsToString()}";
         }
 
-        public void AssignNewAppointment(Appointment newAppointment)
+        public void AddAppointment(Appointment newAppointment)
         {
             appointments.Add(newAppointment);
+            doctor.AddAppointment(newAppointment);
+        }
+
+        public void ModifyAppointment(Appointment lastAppointment, Appointment newAppointment)
+        {
+            RemoveAppointment(lastAppointment);
+            AddAppointment(newAppointment);
+        }
+
+        public void RemoveAppointment(Appointment appointmentToRemove)
+        {
+            doctor.RemoveAppointment(appointmentToRemove);
+            appointments.Remove(appointmentToRemove);
         }
 
         public string AppointmentsToString()

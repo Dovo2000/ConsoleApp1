@@ -35,7 +35,7 @@ namespace Hospital
             people.Remove(administrative);
         }
 
-        public void AddPatient(Patient patient, string doctorId)
+        public void AddPatient(Patient patient, int doctorId)
         {
             try
             {
@@ -50,7 +50,7 @@ namespace Hospital
             }
         }
 
-        public void RemovePatient(string patientId)
+        public void RemovePatient(int patientId)
         {
             try
             {
@@ -94,7 +94,7 @@ namespace Hospital
             return people.Where(p => p is Doctor).Cast<Doctor>().ToList();
         }
 
-        public Doctor GetDoctorByID(string id)
+        public Doctor GetDoctorByID(int id)
         {
             return people.Find(p => p is Doctor &&  p.Id == id) as Doctor;
         }
@@ -102,6 +102,11 @@ namespace Hospital
         public List<Patient> GetPatients() 
         {
             return people.Where(p => p is Patient).Cast<Patient>().ToList(); ;
+        }
+
+        public Patient GetPatientByID(int id)
+        {
+            return people.Find(p => p is Patient && p.Id == id) as Patient;
         }
     }
 }

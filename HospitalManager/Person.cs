@@ -8,21 +8,25 @@ namespace Hospital
 {
     internal abstract class Person
     {
+        protected static int maxId = 0;
         protected string name;
         protected int age;
-        protected string id;
+
 
         public string Name { get => name; protected set => name = value; }
 
         public int Age { get => age; protected set => age = value; }
 
-        public string Id { get => id; protected set => id = value; }
+        public int Id;
 
-        public Person(string name, int age, string id)
+        public Person(string name, int age)
         {
             this.name = name;
             this.age = age;
-            this.id = id;
+
+            maxId++;
+            this.Id = maxId;
+
         }
 
         public override string ToString()

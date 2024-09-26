@@ -9,7 +9,7 @@ namespace Hospital
 {
     internal class Administrative : Person
     {
-        public Administrative(string name, int age, string id) : base(name, age, id)
+        public Administrative(string name, int age) : base(name, age)
         {
         }
 
