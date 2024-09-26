@@ -37,7 +37,6 @@ namespace Hospital
             try
             {
                 Patient patient = patients.Find(p => p.Id == patientId);
-
                 patients.Remove(patient);
             }
             catch (Exception ex)

@@ -31,15 +31,14 @@ namespace Hospital
 
         }
 
-        public Patient(string name, int age, string id, string illness, Doctor doctor) : base(name, age, id)
+        public Patient(string name, int age, string id, string illness) : base(name, age, id)
         {
             Illness = illness;
-            this.doctor = doctor;
         }
 
         public override string ToString()
         {
-            return base.ToString() + "Illness: " + Illness + "\n";
+            return $"{base.ToString()}Illness: {Illness}\nDoctor: {doctor.Name}";
         }
     }
 }

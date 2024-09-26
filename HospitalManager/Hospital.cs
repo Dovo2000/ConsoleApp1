@@ -39,7 +39,10 @@ namespace Hospital
         {
             try
             {
-                ((Doctor)people.Find(d => d.Id == doctorId)).AddPatient(patient);
+                people.Add(patient);
+
+                Doctor doc = (Doctor) people.Find(d => d.Id == doctorId);
+                patient.AssignedDoctor = doc;
             }
             catch (Exception ex)
             {
@@ -47,11 +50,11 @@ namespace Hospital
             }
         }
 
-        public void RemovePatient(string patientId, string doctorId)
+        public void RemovePatient(string patientId)
         {
             try
             {
-                ((Doctor) people.Find(d => d.Id == doctorId)).RemovePatient(patientId);
+                ((Patient) people.Find(d => d.Id == patientId)).AssignedDoctor = null;
             }
             catch (Exception ex)
             {
@@ -76,6 +79,13 @@ namespace Hospital
                     output += p.ToString() + "\n";
             }
 
+            output += "Patients: \n";
+            foreach (Person p in people)
+            {
+                if (p is Patient)
+                    output += p.ToString() + "\n";
+            }
+
             return output;
         }
 
@@ -95,6 +105,19 @@ namespace Hospital
         public Doctor GetDoctorByID(string id)
         {
             return people.Find(p => p is Doctor &&  p.Id == id) as Doctor;
+        }
+
+        public List<Patient> GetPatients() 
+        {
+            List<Person> patients = people.Where(p => p is Patient).ToList();
+            List<Patient> result = new List<Patient>();
+
+            foreach (var p in patients)
+            {
+                result.Add(p as Patient);
+            }
+
+            return result;
         }
     }
 }

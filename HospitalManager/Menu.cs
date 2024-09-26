@@ -58,6 +58,10 @@ namespace Hospital
                     break;
 
                 case 6:
+                    PrintPatients();
+                    break;
+
+                case 7:
                     PrintPeopleInHospital();
                     break;
 
@@ -94,8 +98,9 @@ namespace Hospital
 (2) Add new Administrative.
 (3) Add new Patient.
 (4) Remove a Patient.
-(5) See Doctors and Patients.
-(6) People in the Hospital.");
+(5) See Doctors.
+(6) See Patients.
+(7) People in the Hospital.");
         }
 
         private void AddNewDoctor()
@@ -155,9 +160,9 @@ namespace Hospital
 
                 string docId = Console.ReadLine();
 
-                Doctor doc = hospital.GetDoctorByID(docId);
-                newPatient = new Patient(inputData[0], doctorAge, inputData[2], inputData[3], doc);
+                newPatient = new Patient(inputData[0], doctorAge, inputData[2], inputData[3]);
                 hospital.AddPatient(newPatient, docId);
+
                 Console.WriteLine($"Added Patient: {inputData[0]}");
             }
             else
@@ -172,18 +177,7 @@ namespace Hospital
             PrintPatients();
             string patientId = Console.ReadLine();
 
-            var doctors = hospital.GetDoctors();
-
-            try
-            {
-                var doc = doctors.Find(d => d.HasPatient(patientId));
-
-                doc.RemovePatient(patientId);
-            }
-            catch 
-            { 
-                Console.WriteLine("The patient is not assigned to any doctor."); 
-            }
+            hospital.RemovePatient(patientId);
         }
 
         private void PrintDoctorInfo()
@@ -193,21 +187,16 @@ namespace Hospital
             foreach (var doctor in doctors)
                 Console.WriteLine(doctor.ToString());
         }
+        private void PrintPatients()
+        {
+            foreach(Patient p in hospital.GetPatients())
+                Console.WriteLine(p.ToString());
+        }
 
         private void PrintPeopleInHospital()
         {
             Console.WriteLine(hospital.ToString());
         }
 
-        private void PrintPatients()
-        {
-            var doctors = hospital.GetDoctors();
-
-            foreach(Doctor d in doctors)
-            {
-                foreach(Patient p in d.GetPatients())
-                    Console.WriteLine(p.ToString());
-            }
-        }
     }
 }
