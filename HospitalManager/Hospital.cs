@@ -91,15 +91,7 @@ namespace Hospital
 
         public List<Doctor> GetDoctors()
         {
-            List<Person> docs = people.Where(p => p is Doctor).ToList();
-            List<Doctor> result = new List<Doctor>();
-
-            foreach (var p in docs)
-            {
-                result.Add(p as Doctor);
-            }
-
-            return result;
+            return people.Where(p => p is Doctor).Cast<Doctor>().ToList();
         }
 
         public Doctor GetDoctorByID(string id)
@@ -109,15 +101,7 @@ namespace Hospital
 
         public List<Patient> GetPatients() 
         {
-            List<Person> patients = people.Where(p => p is Patient).ToList();
-            List<Patient> result = new List<Patient>();
-
-            foreach (var p in patients)
-            {
-                result.Add(p as Patient);
-            }
-
-            return result;
+            return people.Where(p => p is Patient).Cast<Patient>().ToList(); ;
         }
     }
 }

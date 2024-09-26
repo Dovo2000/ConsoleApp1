@@ -113,7 +113,7 @@ namespace Hospital
 
             if (inputData.Length >= 3 && int.TryParse(inputData[1], out int doctorAge))
             {
-                newDoc = new Doctor(inputData[0], doctorAge, inputData[2]);
+                newDoc = new Doctor(inputData[0], doctorAge, inputData[2], inputData[3]);
                 hospital.AddDoctor(newDoc);
                 Console.WriteLine($"Added Doctor: {inputData[0]}");
             }
@@ -160,7 +160,7 @@ namespace Hospital
 
                 string docId = Console.ReadLine();
 
-                newPatient = new Patient(inputData[0], doctorAge, inputData[2], inputData[3]);
+                newPatient = new Patient(inputData[0], doctorAge, inputData[2], inputData[3], inputData[4]);
                 hospital.AddPatient(newPatient, docId);
 
                 Console.WriteLine($"Added Patient: {inputData[0]}");

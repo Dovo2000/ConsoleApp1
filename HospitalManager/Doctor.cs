@@ -9,11 +9,12 @@ namespace Hospital
     internal class Doctor : Person
     {
         List<Patient> patients;
+        string speciality;
 
-
-        public Doctor(string name, int age, string id) : base(name, age, id)
+        public Doctor(string name, int age, string id, string speciality) : base(name, age, id)
         {
             patients = new List<Patient>();
+            this.speciality = speciality;
         }
 
         public override string ToString()
